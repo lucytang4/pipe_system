@@ -71,6 +71,36 @@ int client_handshake(int *to_server){
 
   *to_server = wkp; //Quickly set to_server
   return pfo; //fd of recieved end of pfo
-
   
+}
+
+int server_handshake1(char *buf){
+  int fifo = mkfifo("wkp", 0644);//make wkp
+  if (fifo >= 0){
+    printf("[SERVER] WKP created\n");
+  }
+  else{
+    printf("[SERVER] error: %s\n", strerror(errno));
+  }
+
+  int wkpfd = open("wkp", O_RDONLY);
+  read(wkpfd, buf, sizeof(buf));//await connect from client
+  remove("wkp");
+  printf("[SERVER] Received: %s\n", buf);
+
+  return wkpfd;
+  
+}
+
+int server_handshake2(char *buf, int from_client){
+  int pfifo = open(buf, O_WRONLY);
+  printf("[SERVER] connected to client's WKP\n");
+  write(pfifo, "connected to client WKP", 23);
+    
+  //receive client's message, verifying connection
+  char msg2[MESSAGE_BUFFER_SIZE];
+  read(from_client, msg2, MESSAGE_BUFFER_SIZE);
+  printf("[SERVER] received client's message: %s\n", msg2);
+  
+  return pfifo;
 }
