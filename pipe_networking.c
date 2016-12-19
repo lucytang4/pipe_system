@@ -43,7 +43,6 @@ int server_handshake(int *from_client){
 }
 
 int client_handshake(int *to_server){
-<<<<<<< HEAD
 
   printf("[CLIENT] Client Connecting...\n");
   char pfifo[8]; //make private fifo
@@ -105,16 +104,4 @@ int server_handshake2(char *buf, int from_client){
   printf("[SERVER] received client's message: %s\n", msg2);
   
   return pfifo;
-=======
-    
-    //create private FIFO 
-    
-    //connects to server and sends private FIFO name
-    
-    //waits for msg from server
-    
-    //receives server's message (acknowledgement message) and removes private FIFO
-    
-    //sends acknowledgement message
->>>>>>> 25eb77e4647781a4866190aa741f4bf8f9e39153
 }
