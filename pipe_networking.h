@@ -1,2 +1,4 @@
-int client_handshake(int *);
-int server_handshake(int *);
+#define MESSAGE_BUFFER_SIZE 1000
+
+int server_handshake(int *from_client);
+int client_handshake(int *to_server);
