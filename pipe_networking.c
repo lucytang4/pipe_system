@@ -9,6 +9,7 @@
 #include "pipe_networking.h"
 
 int server_handshake(int *from_client){
+    
     //create a FIFO(Well Known Pipe)
     int fifo = mkfifo("wkp", 0644);
     if (fifo >= 0)
@@ -40,4 +41,14 @@ int server_handshake(int *from_client){
 }
 
 int client_handshake(int *to_server){
+    
+    //create private FIFO 
+    
+    //connects to server and sends private FIFO name
+    
+    //waits for msg from server
+    
+    //receives server's message (acknowledgement message) and removes private FIFO
+    
+    //sends acknowledgement message
 }
