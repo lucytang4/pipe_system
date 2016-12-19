@@ -8,6 +8,7 @@
 int main() {
 
   int to_server, from_server;
+  printf("got here");
 
   from_server = client_handshake( &to_server );
   

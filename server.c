@@ -11,7 +11,6 @@ int main() {
 
   int to_client, from_client;
   char buffer[MESSAGE_BUFFER_SIZE];
-  
   to_client = server_handshake( &from_client );
 
   read( from_client, buffer, sizeof(buffer) );
